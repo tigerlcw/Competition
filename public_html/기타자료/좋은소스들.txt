@@ -1,0 +1,2 @@
+<audio controls autoplay>
+<source src="/CountingStars.mp3" //음원소스
