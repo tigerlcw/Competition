@@ -8,7 +8,7 @@ class BoxObject :
 	public Entity
 {
 public:
-	BoxObject(Scene* scene);
+	BoxObject(Scene* scene, path path);
 	~BoxObject();
 
 	void update(float dt);

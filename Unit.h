@@ -49,9 +49,10 @@ public:
 	Unit(Scene* scene);
 	~Unit();
 
+	void render();
 	void update(float dt);
 	void unitCollision(float dt);
-	void changeSkill(int key, SkillState* changeSkill);
+	void changeSkill(int key, SkillState* changeSkill, int code);
 	void getDamage(int damage);
 	void setStatus(int code, float timer);
 	void changeState(int state);
@@ -60,8 +61,6 @@ public:
 	map<int, Clip*> clips;
 	map<int, UnitState*> states;
 	int currentState;
-
-	Sprite* spr;
 
 	int skillNum;
 	SkillState* skill[3];
@@ -80,6 +79,8 @@ public:
 
 	int poisonCnt;
 	Status status[RAIN + 1];
+	Animation* sturn;
+	Animation* rain;
 };
 
 class Unit1 :

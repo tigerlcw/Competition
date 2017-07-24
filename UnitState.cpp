@@ -77,7 +77,7 @@ void UnitKnockBack::update(float dt)
 
 UnitDie::UnitDie(Unit* target) : UnitState(target)
 {
-	Timer.second = 3.0f;
+	Timer.second = 2.0f;
 }
 
 UnitDie::~UnitDie()
@@ -93,6 +93,12 @@ void UnitDie::update(float dt)
 {
 	Timer.first += dt;
 	if (Timer.first >= Timer.second){
-
+		GameScene* GS = (GameScene*)target->scene;
+		if (GS->player1->target == target){
+			GS->ui->win_2p->visible = true;
+		}
+		else{
+			GS->ui->win_1p->visible = true;
+		}
 	}
 }

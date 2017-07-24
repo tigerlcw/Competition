@@ -142,7 +142,7 @@ INT WINAPI wWinMain( HINSTANCE, HINSTANCE, LPWSTR, int )
     DXUTSetHotkeyHandling( false, true, true );  // handle the default hotkeys
     DXUTSetCursorSettings( true, true ); // Show the cursor and clip it when in full screen
     DXUTCreateWindow( L"Slash" );
-    DXUTCreateDevice( true, 1920, 1080);
+    DXUTCreateDevice( false, 1920, 1080);
 
 	world.init();
 

@@ -4,7 +4,7 @@
 
 Item::Item(int code) : code(code)
 {
-	spr = new Sprite();
+	spr = new Sprite("image/item/" + to_string(code) + ".png");
 	addChild(spr);
 
 	rect = spr->rect;
@@ -19,7 +19,7 @@ Item::~Item()
 
 void Item::getItem(Unit* target)
 {
-	if (target->skillNum < 2){
+	if (target->skillNum < 3){
 		SkillState* skill = nullptr;
 		if (code == RED){
 			skill = new Red(target);
@@ -50,7 +50,7 @@ void Item::getItem(Unit* target)
 		}
 
 		if (skill){
-			target->changeSkill(target->skillNum++, skill);
+			target->changeSkill(target->skillNum++, skill, code);
 			removeChild(this);
 		}
 	}

@@ -5,13 +5,13 @@
 
 Bullet::Bullet(Scene* scene, Unit* target, int code) 
 : scene(scene), target(target), code(code), timer(0.0f),
-moveSpeed(1200.0f)
+moveSpeed(800.0f)
 {
-	if (STURN_BULLET){
-		ani = new Animation("image/bullet/dark", 2, 8);
+	if (code == STURN_BULLET){
+		ani = new Animation("image/bullet/dark", 2, 6);
 	}
 	else if (code == POISON_BULLET){
-		ani = new Animation("image/bullet/poison", 2, 8);
+		ani = new Animation("image/bullet/poison", 2, 6);
 	}
 	addChild(ani);
 
@@ -37,7 +37,7 @@ void Bullet::update(float dt)
 				GS->player2->target->setStatus(STURN, 1.5f);
 			}
 			if (code == POISON_BULLET){
-				GS->player1->target->setStatus(POISON, 2.5f);
+				GS->player2->target->setStatus(POISON, 2.5f);
 			}
 			removeChild(this);
 		}
@@ -45,7 +45,7 @@ void Bullet::update(float dt)
 	else{
 		if (GS->player1->target->rectWithPos().intersects_Rect(rect, pos)){
 			if (code == STURN_BULLET){
-				GS->player2->target->setStatus(STURN, 1.5f);
+				GS->player1->target->setStatus(STURN, 1.5f);
 			}
 			if (code == POISON_BULLET){
 				GS->player1->target->setStatus(POISON, 2.5f);

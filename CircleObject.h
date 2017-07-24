@@ -9,7 +9,7 @@ class CircleObject :
 	public Entity
 {
 public:
-	CircleObject(Scene* scene);
+	CircleObject(Scene* scene, path path);
 	~CircleObject();
 
 	void update(float dt);

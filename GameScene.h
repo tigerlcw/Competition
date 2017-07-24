@@ -1,6 +1,8 @@
 #pragma once
 #include "Scene.h"
 #include "Unit.h"
+#include "UI.h"
+#include "Map.h"
 
 #define ATTACK_KEY_DELAY 0.2f
 
@@ -46,10 +48,15 @@ class GameScene :
 	public Scene
 {
 public:
-	GameScene();
+	GameScene(int _1pCode, int _2pCode);
 	~GameScene();
 
+	void render();
 	void update(float dt);
+	void creatItem(int code);
+
+	UI* ui;
+	Map* stageMap;
 
 	Controller* player1;
 	Controller* player2;
@@ -59,5 +66,9 @@ public:
 	Entity* unitList;
 	Entity* itemList;
 	Entity* bulletList;
+
+	int stage;
+	bool isGame;
+	float gameTime;
 };
 

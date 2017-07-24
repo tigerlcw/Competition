@@ -87,6 +87,18 @@
     <Filter Include="Game\Entities\Bullet">
       <UniqueIdentifier>{239e9b7f-351f-4ef6-bc7d-0d362cb42563}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\Entities\UI">
+      <UniqueIdentifier>{ff444c12-0c62-4628-a341-4a0067ddcefe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Entities\Map">
+      <UniqueIdentifier>{07562fe4-bb8b-4752-9fd3-3e1a8d8d6423}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Scenes\MainScene">
+      <UniqueIdentifier>{544f11f2-4bd4-4a9e-ac8e-01c0749130df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Scenes\SelectScene">
+      <UniqueIdentifier>{ef111bd2-6522-4c20-bb2c-4beb0cdea916}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="DXUT\Optional\directx.ico">
@@ -211,7 +223,21 @@
     <ClCompile Include="UnitState.cpp">
       <Filter>Game\Entities\UnitState</Filter>
     </ClCompile>
-    <ClCompile Include="Bullet.cpp" />
+    <ClCompile Include="Bullet.cpp">
+      <Filter>Game\Entities\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="UI.cpp">
+      <Filter>Game\Entities\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Map.cpp">
+      <Filter>Game\Entities\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="MainScene.cpp">
+      <Filter>Game\Scenes\MainScene</Filter>
+    </ClCompile>
+    <ClCompile Include="SelectScene.cpp">
+      <Filter>Game\Scenes\SelectScene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Asset.h">
@@ -277,7 +303,21 @@
     <ClInclude Include="UnitState.h">
       <Filter>Game\Entities\UnitState</Filter>
     </ClInclude>
-    <ClInclude Include="Bullet.h" />
+    <ClInclude Include="Bullet.h">
+      <Filter>Game\Entities\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="UI.h">
+      <Filter>Game\Entities\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Map.h">
+      <Filter>Game\Entities\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="MainScene.h">
+      <Filter>Game\Scenes\MainScene</Filter>
+    </ClInclude>
+    <ClInclude Include="SelectScene.h">
+      <Filter>Game\Scenes\SelectScene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CLInclude Include="resource.h">

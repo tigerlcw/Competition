@@ -3,9 +3,9 @@
 #include "GameScene.h"
 
 
-BoxObject::BoxObject(Scene* scene) : scene(scene)
+BoxObject::BoxObject(Scene* scene, path path) : scene(scene)
 {
-	Spr = new Sprite("image/rect.png");
+	Spr = new Sprite(path);
 	addChild(Spr);
 
 	rect = Spr->rect;

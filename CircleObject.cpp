@@ -3,9 +3,9 @@
 #include "GameScene.h"
 
 
-CircleObject::CircleObject(Scene* scene) : scene(scene)
+CircleObject::CircleObject(Scene* scene, path path) : scene(scene)
 {
-	Spr = new Sprite("image/circle.png");
+	Spr = new Sprite(path);
 	addChild(Spr);
 
 	rect = Spr->rect;

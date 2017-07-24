@@ -2,6 +2,7 @@
 #include "World.h"
 #include "GameScene.h"
 #include "Asset.h"
+#include "MainScene.h"
 
 World::World(void)
 	:currentScene(nullptr)
@@ -41,7 +42,7 @@ void World::init()
 	asset.init();
 	cout.precision(3);
 	D3DXCreateSprite(DXUTGetD3D9Device(), &rootSprite);
-	changeScene(new GameScene());
+	changeScene(new MainScene());
 	ZeroMemory(lastKeys, sizeof(lastKeys));
 	ZeroMemory(currentKeys, sizeof(currentKeys));
 }

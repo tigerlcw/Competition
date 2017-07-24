@@ -3,12 +3,8 @@
 #include "GameScene.h"
 
 
-Unit::Unit(Scene* scene) : scene(scene), isRight(true), damage(10), currentState(STAND)
+Unit::Unit(Scene* scene) : scene(scene), isRight(true), damage(10), currentState(STAND), skillNum(0)
 {
-	spr = new Sprite("image/box.png");
-	spr->visible = false;
-	addChild(spr);
-
 	states[STAND] = new UnitState(this);
 	states[RUN] = new UnitState(this);
 	states[ATTACK] = new UnitAttack(this);
@@ -23,8 +19,19 @@ Unit::Unit(Scene* scene) : scene(scene), isRight(true), damage(10), currentState
 		status[i].isStatus = false;
 	}
 
-	rect = spr->rect;
+	rect = Rect(0, 0, 150, 150);
 	BDistance = rect.right / 2;
+
+	sturn = new Animation("image/effect/sturn", 5, 15);
+	sturn->setCenter(rect.center());
+	sturn->pos.y = 0;
+	sturn->visible = false;
+	addChild(sturn);
+
+	rain = new Animation("image/effect/rainbow", 3, 9);
+	rain->setCenter(rect.center());
+	rain->visible = false;
+	addChild(rain);
 }
 
 
@@ -39,6 +46,14 @@ Unit::~Unit()
 	}
 }
 
+void Unit::render()
+{
+	Entity::render();
+
+	rain->render();
+	sturn->render();
+}
+
 void Unit::update(float dt)
 {
 	Entity::update(dt);
@@ -48,18 +63,23 @@ void Unit::update(float dt)
 		mp.current = mp.max;
 	}
 
+	for (int i = 0; i < 3; i++){
+		skill[i]->update(dt);
+	}
+
 	for (int i = 0; i < RAIN + 1; i++){
 		if (status[i].isStatus){
 			status[i].update(dt);
 			if (!status[i].isStatus){
 				if (i == STURN){
-
+					sturn->visible = false;
 				}
 				if (i == POISON){
 
 				}
 				if (i == RAIN){
 					damage -= 10;
+					rain->visible = false;
 				}
 			}
 		}
@@ -69,6 +89,19 @@ void Unit::update(float dt)
 			poisonCnt++;
 			getDamage(4);
 		}
+	}
+
+	if (pos.x < 0){
+		pos.x = 0;
+	}
+	if (pos.y < 0){
+		pos.y = 0;
+	}
+	if (pos.x > 1920 - rect.right){
+		pos.x = 1920 - rect.right;
+	}
+	if (pos.y > 1080 - rect.bottom){
+		pos.y = 1080 - rect.bottom;
 	}
 }
 
@@ -82,23 +115,51 @@ void Unit::unitCollision(float dt)
 		if (rectWithPos().intersects_Rect(u->rect, u->pos)){
 			pos -= moveVector * moveSpeed * dt;
 
-			if (currentState == ATTACK){
-				if (u->currentState == ATTACK){
+			if (status[RAIN].isStatus){
+				if (u->status[RAIN].isStatus){
 					u->moveVector = moveVector;
 					moveVector *= -1;
-					knockbackPower = 500;
-					u->knockbackPower = 500;
+					knockbackPower = 300;
+					u->knockbackPower = 300;
 					getDamage(u->damage);
 					u->getDamage(damage);
 					u->isRight = !isRight;
-					changeState(KNOCKBACK);
-					u->changeState(KNOCKBACK);
+					if (currentState != DIE)
+						changeState(KNOCKBACK);
+					if (u->currentState != DIE)
+						u->changeState(KNOCKBACK);
 				}
 				else{
 					u->moveVector = moveVector;
-					u->knockbackPower = 1000;
-					u->changeState(KNOCKBACK);
+					u->knockbackPower = 600;
 					u->getDamage(damage);
+					if (u->currentState != DIE)
+						u->changeState(KNOCKBACK);
+					u->isRight = !isRight;
+					changeState(STAND);
+				}
+			}
+
+			else if (currentState == ATTACK){
+				if (u->currentState == ATTACK){
+					u->moveVector = moveVector;
+					moveVector *= -1;
+					knockbackPower = 300;
+					u->knockbackPower = 300;
+					getDamage(u->damage);
+					u->getDamage(damage);
+					u->isRight = !isRight;
+					if (currentState != DIE)
+						changeState(KNOCKBACK);
+					if (u->currentState != DIE)
+						u->changeState(KNOCKBACK);
+				}
+				else{
+					u->moveVector = moveVector;
+					u->knockbackPower = 600;
+					u->getDamage(damage);
+					if (u->currentState != DIE)
+						u->changeState(KNOCKBACK);
 					u->isRight = !isRight;
 					changeState(STAND);
 				}
@@ -128,18 +189,34 @@ void Unit::unitCollision(float dt)
 	}
 }
 
-void Unit::changeSkill(int key, SkillState* changeSkill)
+void Unit::changeSkill(int key, SkillState* changeSkill, int code)
 {
 	SAFE_DELETE(skill[key]);
 	skill[key] = changeSkill;
+	GameScene* GS = (GameScene*)scene;
+	if (GS->player1->target == this){
+		GS->ui->icon_1p[key] = new Sprite("image/item/" + to_string(code) + ".png");
+		GS->ui->icon_1p[key]->setCenter(GS->ui->base_1p[key]->center());
+		GS->ui->icon_1p[key]->scaleCenter = GS->ui->icon_1p[key]->rect.center();
+		GS->ui->icon_1p[key]->scale *= 0.65;
+		GS->ui->addChild(GS->ui->icon_1p[key]);
+	}
+	else{
+		GS->ui->icon_2p[key] = new Sprite("image/item/" + to_string(code) + ".png");
+		GS->ui->icon_2p[key]->setCenter(GS->ui->base_2p[key]->center());
+		GS->ui->icon_2p[key]->scaleCenter = GS->ui->icon_2p[key]->rect.center();
+		GS->ui->icon_2p[key]->scale *= 0.65;
+		GS->ui->addChild(GS->ui->icon_2p[key]);
+	}
 }
 
 void Unit::getDamage(int damage)
 {
 	if (currentState == DIE) return;
-	if (currentState == RAIN) return;
+	if (status[RAIN].isStatus) return;
 	hp.current -= damage;
 	if (hp.current <= 0){
+		hp.current = 0;
 		changeState(DIE);
 	}
 }
@@ -151,13 +228,14 @@ void Unit::setStatus(int code, float timer)
 	status[code].Timer.second = timer;
 
 	if (code == STURN){
-
+		sturn->visible = true;
 	}
 	if (code == POISON){
 		poisonCnt = 0;
 	}
 	if (code == RAIN){
 		damage += 10;
+		rain->visible = true;
 	}
 }
 
@@ -219,6 +297,9 @@ Unit1::Unit1(Scene* scene) : Unit(scene)
 	hp.init(150);
 	mp.init(50);
 	moveSpeed = 200.0f;
+
+	rect = clips[STAND]->left->rect;
+	BDistance = rect.right / 2;
 }
 
 Unit2::Unit2(Scene* scene) : Unit(scene)
@@ -265,6 +346,9 @@ Unit2::Unit2(Scene* scene) : Unit(scene)
 	hp.init(100);
 	mp.init(100);
 	moveSpeed = 400.0f;
+
+	rect = clips[STAND]->left->rect;
+	BDistance = rect.right / 2;
 }
 
 Unit3::Unit3(Scene* scene) : Unit(scene)
@@ -301,4 +385,7 @@ Unit3::Unit3(Scene* scene) : Unit(scene)
 	hp.init(50);
 	mp.init(150);
 	moveSpeed = 800.0f;
+
+	rect = clips[STAND]->left->rect;
+	BDistance = rect.right / 2;
 }

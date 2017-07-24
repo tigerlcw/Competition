@@ -6,7 +6,7 @@
 #include "CircleObject.h"
 #include "Bullet.h"
 
-SkillState::SkillState(Unit* target) : target(target), isOn(true), costMp(0), Timer(0.0f, 0.0f)
+SkillState::SkillState(Unit* target) : target(target), isOn(true), costMp(0), Timer(0.0f, 0.01f)
 {
 }
 
@@ -18,6 +18,7 @@ SkillState::~SkillState()
 void SkillState::start()
 {
 	isOn = false;
+	target->mp.current -= costMp;
 	Timer.first = Timer.second;
 }
 
@@ -25,8 +26,8 @@ void SkillState::update(float dt)
 {
 	if (!isOn){
 		Timer.first -= dt;
-		if (Timer.first < 0.0f){
-			Timer.first = Timer.second;
+		if (Timer.first <= 0.0f){
+			Timer.first = 0;
 			isOn = true;
 		}
 	}
@@ -63,7 +64,7 @@ void Blue::start()
 Yellow::Yellow(Unit* target) : SkillState(target)
 {
 	costMp = 20;
-	Timer.first = Timer.second = 6.0f;
+	Timer.second = 6.0f;
 }
 
 Yellow::~Yellow()
@@ -90,7 +91,7 @@ void Yellow::start()
 Green::Green(Unit* target) : SkillState(target)
 {
 	costMp = 10;
-	Timer.first = Timer.second = 15.0f;
+	Timer.second = 15.0f;
 }
 
 Green::~Green()
@@ -106,8 +107,10 @@ void Green::start()
 	SkillState::start();
 
 	Bullet* b = new Bullet(target->scene, target, POISON_BULLET);
+	b->rotationCenter = b->center();
 	b->rotation = angle(Vec2(0, 0), target->moveVector);
-	b->pos += Vec2(cos(b->rotation), sin(b->rotation)) * 100.0f;
+	b->setCenter(target->center());
+	b->pos += Vec2(cos(b->rotation), sin(b->rotation)) * 75.0f;
 	GameScene* GS = (GameScene*)target->scene;
 	GS->bulletList->addChild(b);
 }
@@ -115,7 +118,7 @@ void Green::start()
 Black::Black(Unit* target) : SkillState(target)
 {
 	costMp = 15;
-	Timer.first = Timer.second = 15.0f;
+	Timer.second = 15.0f;
 }
 
 Black::~Black()
@@ -131,8 +134,10 @@ void Black::start()
 	SkillState::start();
 
 	Bullet* b = new Bullet(target->scene, target, STURN_BULLET);
+	b->rotationCenter = b->center();
 	b->rotation = angle(Vec2(0, 0), target->moveVector);
-	b->pos += Vec2(cos(b->rotation), sin(b->rotation)) * 100.0f;
+	b->setCenter(target->center());
+	b->pos += Vec2(cos(b->rotation), sin(b->rotation)) * 75.0f;
 	GameScene* GS = (GameScene*)target->scene;
 	GS->bulletList->addChild(b);
 }
@@ -166,7 +171,7 @@ void Indigo::start()
 Purple::Purple(Unit* target) : SkillState(target)
 {
 	costMp = 20;
-	Timer.first = Timer.second = 20.0f;
+	Timer.second = 20.0f;
 }
 
 Purple::~Purple()
@@ -199,7 +204,7 @@ void Purple::start()
 Rainbow::Rainbow(Unit* target) : SkillState(target)
 {
 	costMp = 30;
-	Timer.first = Timer.second = 25.0f;
+	Timer.second = 25.0f;
 }
 
 Rainbow::~Rainbow()
