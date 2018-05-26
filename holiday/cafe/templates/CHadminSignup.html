@@ -1,0 +1,98 @@
+<html>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+    <body>
+        <div class="row">
+            <form class="col s12" action="Admin/Signup/" "method="POST"> {% csrf_token %}
+
+                <div class="row">
+                <div class="input-field col s12">
+                    <input id="email" name = "email" type="email" class="validate" required>
+                    <label for="email">Email</label>
+                    <span class="helper-text" data-error="wrong" data-success="right">Helper text</span>
+                </div>
+                </div>
+
+                <div class="row">
+                <div class="input-field col s12">
+                    <input id="password" name = "password" type="password" class="validate" required>
+                    <label for="password">Password</label>
+                </div>
+                </div>
+                
+                <div class="row">
+                <div class="input-field col s12">
+                    <input id="name" name = "name" type="text" class="validate" required>
+                    <label for="name">이름</label>
+                </div>
+                </div>
+                <div class="row">
+                <div class="input-field col s12">
+                    <input type="text" name="bdate" placeholder="(생년월일)YYYY-MM-DD" required 
+                    pattern="(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))" 
+                    title="Enter a date in this format YYYY-MM-DD"/>
+                </div>
+                </div>
+                <div class="row">
+                <div class="input-field col s12">
+                    <input type="tel" name = "pnumber" id="usertel" class="validate" required 
+                    pattern="(010)\d{3,4}\d{4}">
+                    <label for="usertel">(전화번호)010XXXXYYYY</label>
+                </div>
+                </div>
+                <div class="row">
+                <div class="input-field col s12">
+                    <p>
+                        <label>
+                            <input name="divideTeam" value="leader" type="radio" class="with-gap" checked />
+                            <span>팀장</span>
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                            <input name="divideTeam" value="employee" type="radio" class="with-gap" />
+                            <span>사원</span>
+                        </label>
+                    </p>
+                    <p>
+                </div>
+                </div>
+                <div class="input-field col s12">
+                    <select name = "pname" required>
+                        <option value="" disabled selected>회원의 부서를 선택하세요</option>
+                        <option value="web">웹 부서</option>
+                        <option value="mobile">모바일 부서</option>
+                        <option value="aplication">어플리케이션 부서</option>
+                        <option value="employee">카페직원</option>
+                    </select>
+                    <label>부서 선택</label>
+                </div>
+                <div class="input-field col s12">
+                    <select name = "auth" required>
+                        <option value="" disabled selected>회원의 권한을 선택하세요</option>
+                        <option value="employee">카페직원</option>
+                        <option value="user">일반이용자</option>
+                    </select>
+                    <label>권한 선택</label>
+                </div>
+                <input type="submit" >
+ 
+            </form>
+        </div>        
+    </body>
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('select').formSelect();
+        });
+    </script>
+</html>
+<style>
+body {
+    max-width: 560px;
+    margin-right: auto;
+    margin-bottom: 60px;
+    margin-left: auto;
+}
+</style>

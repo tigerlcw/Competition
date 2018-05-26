@@ -1,0 +1,107 @@
+<html>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+        <body>
+            <!-- ice coffee 추가 -->
+            <form class="col s12" action="/" method="POST"> {% csrf_token %}
+                <div class="row">
+                    <div class="input-field col s8">
+                        <select>
+                            <option value="iceAmericano">(ice)아메리카노</option>
+                            <option value="iceCoffeLatte">(ice)커피라떼</option>
+                        </select>
+                        <label>(ice)커피선택</label>
+                    </div>
+                    <div class="input-field col s4">
+                        <input id="number" name = "Fnum" type="text" value="0">
+                        <label for="number">갯수</label>
+                    </div>
+                </div>
+                <!-- hot coffee -->
+                <div class="row">
+                    <div class="input-field col s8">
+                        <select>
+                            <option value="hotAmericano">(hot)아메리카노</option>
+                            <option value="hotCoffeLatte">(hot)커피라떼</option>
+                            <option value="espresso">(hot)에스프레소</option>
+                        </select>
+                        <label>(hot)커피선택</label>
+                    </div>
+                    <div class="input-field col s4">
+                        <input id="number" type="text" value="0">
+                        <label for="number">갯수</label>
+                    </div>
+                </div>
+                <!-- ice Beverage -->
+                <div class="row">
+                    <div class="input-field col s8">
+                        <select>
+                            <option value="iceGrapefruit">(ice)자몽에이드</option>
+                            <option value="iceLemon">(ice)레몬에이드</option>
+                            <option value="iceGreen">(ice)녹차</option>
+                        </select>
+                        <label>(ice)음료선택</label>
+                    </div>
+                    <div class="input-field col s4">
+                        <input id="number" type="text" value="0">
+                        <label for="number">갯수</label>
+                    </div>
+                </div>
+                <!-- hot beverage -->
+                <div class="row">
+                    <div class="input-field col s8">
+                        <select>
+                            <option value="hotGreen">(hot)녹차</option>
+                            <option value="hotLemon">(hot)레몬차</option>
+                        </select>
+                        <label>(hot)음료선택</label>
+                    </div>
+                    <div class="input-field col s4">
+                        <input id="number" type="text" value="0">
+                        <label for="number">갯수</label>
+                    </div>
+                </div>
+                <div class="row">
+                        <div class="input-field col s8">
+                            <select>
+                                <option value="hotGreen">(hot)녹차</option>
+                                <option value="hotLemon">(hot)레몬차</option>
+                            </select>
+                            <label>(hot)음료선택</label>
+                        </div>
+                        <div class="input-field col s4">
+                            <input id="number" type="text" value="0">
+                            <label for="number">갯수</label>
+                        </div>
+                    </div>
+                    <input type="submit">
+            </form>
+            
+        
+                
+            <!-- 디저트 추가 -->
+    
+            <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+            <!-- <script src="js/materialize.js"></script> -->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+            <script>
+ 
+    
+            $(document).ready(function(){
+                $('select').formSelect();
+            });
+    
+            </script>
+        </body>
+        
+    </html>
+    <style>
+    body {
+        max-width: 560px;
+        margin-right: auto;
+        margin-bottom: 60px;
+        margin-left: auto;
+    }
+    
+    
+    </style>

@@ -1,0 +1,150 @@
+<html>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+        <body>
+            <!-- ice coffee 추가 -->
+            <form class="col s12" method="POST"> {% csrf_token %}
+                <div class="row" id="addedCoffee">
+                    <div class="input-field col s8">
+                        <select name="iceCoffee">
+                            {% for cur in res11 %}
+                            <option value={{cur.Name}} >{{cur.Name}}</option>
+                            {% endfor %}
+                        </select>
+                        <label>(ice)커피선택</label>
+                    </div>
+                    <div class="input-field col s4">
+                        <input id="number" name="iceCoffeeNum" type="text" value="0">
+                        <label for="number">갯수</label>
+                    </div>
+                </div>
+                <!-- hot coffee -->
+                <div class="row">
+                    <div class="input-field col s8">
+                        <select name="hotCoffee">
+                            {% for cur in res12 %}
+                            <option value={{cur.Name}} >{{cur.Name}}</option>
+                            {% endfor %}
+                        </select>
+                        <label>(hot)커피선택</label>
+                    </div>
+                    <div class="input-field col s4">
+                        <input id="number" name="hotCoffeeNum" type="text" value="0">
+                        <label for="number">갯수</label>
+                    </div>
+                </div>
+                <!-- ice Tea -->
+                <div class="row">
+                    <div class="input-field col s8">
+                        <select name="iceTea">
+                            {% for cur in res21 %}
+                            <option value={{cur.Name}} >{{cur.Name}}</option>
+                            {% endfor %}
+                        </select>
+                        <label>(ice)차선택</label>
+                    </div>
+                    <div class="input-field col s4">
+                        <input id="number" name="iceTeaNum" type="text" value="0">
+                        <label for="number">갯수</label>
+                    </div>
+                </div>                
+                <!-- Hot Tea -->
+                <div class="row">
+                    <div class="input-field col s8">
+                        <select name="hotTea">
+                            {% for cur in res22 %}
+                            <option value={{cur.Name}} >{{cur.Name}}</option>
+                            {% endfor %}
+                        </select>
+                        <label>(hot)차선택</label>
+                    </div>
+                    <div class="input-field col s4">
+                        <input id="number" name="hotTeaNum" type="text" value="0">
+                        <label for="number">갯수</label>
+                    </div>
+                </div>  
+                <!-- ice Beverage -->
+                <div class="row">
+                    <div class="input-field col s8">
+                        <select name="iceBeverage">
+                            {% for cur in res31 %}
+                            <option value={{cur.Name}} >{{cur.Name}}</option>
+                            {% endfor %}
+                        </select>
+                        <label>(ice)음료선택</label>
+                    </div>
+                    <div class="input-field col s4">
+                        <input id="number" name="iceBeverageNum" type="text" value="0">
+                        <label for="number">갯수</label>
+                    </div>
+                </div>
+                <!-- hot beverage -->
+                <div class="row">
+                    <div class="input-field col s8">
+                        <select name="hotBeverage">
+                            {% for cur in res32 %}
+                            <option value={{cur.Name}} >{{cur.Name}}</option>
+                            {% endfor %}
+                        </select>
+                        <label>(hot)음료선택</label>
+                    </div>
+                    <div class="input-field col s4">
+                        <input id="number" name="hotBeverageNum" type="text" value="0">
+                        <label for="number">갯수</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s8">
+                        <select name="dessert">
+                            {% for cur in res4 %}
+                            <option value={{cur.Name}} >{{cur.Name}}</option>
+                            {% endfor %}
+                        </select>
+                        <label>디저트 선택</label>
+                    </div>
+                    <div class="input-field col s4">
+                        <input id="number" name="dessertNum" type="text" value="0">
+                        <label for="number">갯수</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input name="Rdate" type="text" class="datepicker" placeholder="날짜선택"/>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input name="Rtime" type="text" class="timepicker" placeholder="시간선택"/>
+                    </div>
+                </div>
+         
+                <input type="submit" value="주문하기">
+                <input type="submit" value="추가하기">
+            </form>
+            <!-- 디저트 추가 -->
+    
+            <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+            <script type="text/javascript">
+            
+                $(document).ready(function(){
+                    $('select').formSelect();
+                    $('.datepicker').datepicker();
+                    $('.timepicker').timepicker();
+                });
+    
+            </script>
+        </body>
+        
+    </html>
+    <style>
+    body {
+        max-width: 560px;
+        margin-right: auto;
+        margin-bottom: 60px;
+        margin-left: auto;
+    }
+    
+    
+    </style>

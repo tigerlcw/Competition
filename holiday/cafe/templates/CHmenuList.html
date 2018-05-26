@@ -1,0 +1,73 @@
+<html>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+    <body>
+        <div id="target">
+            <table class="table table-hover">
+            <thead>
+                <tr>
+                <th scope="col">메뉴</th>
+                <th scope="col">가격</th>
+                <th scope="col">온,냉</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for cur in res1 %}
+                <tr>
+                <td>{{cur.Name}}</td>
+                <td>{{cur.Price}}</td>
+                <td>{{cur.HotorIce}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+            <tbody>
+                {% for cur in res2 %}
+                <tr>
+                <td>{{cur.Name}}</td>
+                <td>{{cur.Price}}</td>
+                <td>{{cur.HotorIce}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+            <tbody>
+                {% for cur in res3 %}
+                <tr>
+                <td>{{cur.Name}}</td>
+                <td>{{cur.Price}}</td>
+                <td>{{cur.HotorIce}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+            <thead>
+                <tr>
+                <th scope="col">메뉴</th>
+                <th scope="col">가격</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for cur in res4 %}
+                <tr>
+                <td>{{cur.Name}}</td>
+                <td>{{cur.Price}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+
+            </table>
+        </div>
+        <form method="GET"> {% csrf_token %}
+            <button type="submit">추가</button>
+        </form>  
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+    </body>
+</html>
+<style>
+body {
+    max-width: 560px;
+    margin-right: auto;
+    margin-bottom: 60px;
+    margin-left: auto;
+}
+</style>
+    
