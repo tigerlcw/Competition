@@ -15,7 +15,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, '/public')));
 
-https.createServer(/*options,*/ app).listen(3000,3030,(err)=>{
+https.createServer(/*options,*/ app).listen(3000,(err)=>{
     if(err){
         console.log('Server Error!')
         throw err

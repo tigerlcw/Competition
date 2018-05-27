@@ -11,13 +11,14 @@ nav .brand-logo {
   color: #536dfe;
 }
 
+h4 {
+  color: #D358F7;
+}
+
 p {
   line-height: 2rem;
 }
 
-h4 {
-  color: #D358F7
-}
 .sidenav-trigger {
   color: #ffffff;
 }
