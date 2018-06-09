@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>약궁 - 건강식품 구매하기</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link rel="shortcut icon"href="약궁로고1.png">
+</head>
+    <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+
+    </head>
+    <body>
+        <center>
+          <br><br>
+    <a id="kakao-login-btn"></a>
+    <a href="http://developers.kakao.com/logout"></a>
+    <script type='text/javascript'>
+      //<![CDATA[
+        // 사용할 앱의 JavaScript 키를 설정해 주세요.
+        Kakao.init('35c2c9560bd168578fd293e198b0727e');
+        // 카카오 로그인 버튼을 생성합니다.
+        Kakao.Auth.createLoginButton({
+          container: '#kakao-login-btn',
+          success: function(authObj) {
+            alert(JSON.stringify(authObj));
+            alert("로그인 성공!!!");
+          },
+          fail: function(err) {
+             alert(JSON.stringify(err));
+          }
+        });
+      //]]>
+    </script>
+    <br><br>
+      <a href="index.html" id="download-button" class="btn-large waves-effect blue darken-3">뒤로가기</a>
+  </center>
+    </body>
+    </html>
