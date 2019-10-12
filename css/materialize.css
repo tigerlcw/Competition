@@ -6067,16 +6067,18 @@ body.keyboard-focused .dropdown-content li:focus {
 }
 
 .materialbox-caption {
+  font-size: 15px;
+  font-family: 'Nanum Gothic';
   position: fixed;
-  display: none;
-  color: #fff;
-  line-height: 50px;
+  display: block;
+  color: rgb(255, 255, 255);
+ 
   bottom: 0;
   left: 0;
   width: 100%;
-  text-align: center;
+  text-align: left;
   padding: 0% 15%;
-  height: 50px;
+  height: 100px;
   z-index: 1000;
   -webkit-font-smoothing: antialiased;
 }

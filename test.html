@@ -27,6 +27,9 @@
   color: black;
 
   }
+
+  h6{font-family: 'Nanum Gothic'
+  ;}
   #fixedbutton {
     height:75px;
 	  width: 20%;
@@ -58,24 +61,36 @@
         </div>
       </nav>
   <br>
-    <h5 align="center">무엇으로 보이시나요?<br>해당 사진을 클릭하시면<br>정답과 증상을 알려드려요!</h5>
-    <br>
+  <div class="container">
+    <a href="colorbook.html"class="btn-floating waves-effect waves-light red"><i class="material-icons">add</i></a>
+    <h6 align="center">무엇으로 보이시나요?<br>해당 사진을 클릭하시면<br>정답과 증상을 알려드려요!</h6>
+  </div>
+  <img class="materialboxed" data-caption="제1표.정상자나 색각이상자나 모두 15로 읽는다." width="100%" src="testimg/1_15.jpg">
+  <br>
+  <img class="materialboxed" data-caption="제2표.정상자는 5로 읽고, 제1 및 제2 색각이상자(이하 이상자로 약기함)는 3으로 읽으며, 전색약 색맹자는 읽지 못한다." width="100%" src="testimg/2_5.jpg">
+  <br>
+  <img class="materialboxed" data-caption="제3표.정상자는 75로 읽고, 이상자는 16으로 읽으며, 전색약 색맹자는 읽지 못한다." width="100%" src="testimg/3_75.jpg">
+  <br>
+  <img class="materialboxed" data-caption="제4표.정상자는 8로 읽고, 이상자는 5로 읽으며, 전색약 색맹자는 읽지 못한다." width="100%" src="testimg/4_8.jpg">
+  <br>
+  <img class="materialboxed" data-caption="제5표.정상자는 48로 읽고, 이상자는 13으로 읽으며, 전색약 색맹자는 읽지 못한다." width="100%" src="testimg/5_.jpg">
+  <br>
+  <img class="materialboxed" data-caption="제8표.정상자는 7로 읽으나, 이상자 및 전색약 색맹자는 읽지 못한다." width="100%" src="testimg/8_7.jpg">
+  <br>
+  <img class="materialboxed" data-caption="제9표.정상자 및 전색약 색맹자는 읽지 못하나, 이상자는 대부분 5로 읽는다." width="100%" src="testimg/9_5.jpg">
+  <br>
+  <img class="materialboxed" data-caption="제10표.정상자 및 이상자는 66으로 읽으나, 제3(청황) 색각이상 및 전색약 색맹자는 읽지 못한다." width="100%" src="testimg/10_66.jpg">
+  <br>
+  <img class="materialboxed" data-caption="제11표.정상자는 녹색계통의 색으로 된 곡선을 완전히 그릴 수 있으나, 이상자는 청녹색 곡선만 보여서 지름길로 곡선을 그린다. 전색약 색맹자는 이 곡선을 그리지 못한다." width="100%" src="testimg/11_line.jpg">
 
-    <div class="carousel carousel-slider">
-        <a class="carousel-item" href="#one!"><img src="testimg/1_15.jpg"></a>
-        <a class="carousel-item" href="#two!"><img src="testimg/2_5.jpg"></a>
-        <a class="carousel-item" href="#three!"><img src="testimg/3_75.jpg"></a>
-        <a class="carousel-item" href="#four!"><img src="testimg/4_8.jpg"></a>
-        <a class="carousel-item" href="#one!"><img src="testimg/5_.jpg"></a>
-        <a class="carousel-item" href="#two!"><img src="testimg/8_7.jpg"></a>
-        <a class="carousel-item" href="#three!"><img src="testimg/9_5.jpg"></a>
-        <a class="carousel-item" href="#four!"><img src="testimg/10_66.jpg"></a>
-        <a class="carousel-item" href="#four!"><img src="testimg/11_line.jpg"></a>
-      </div>
 <script>
   $('.carousel.carousel-slider').carousel({fullWidth: true});
+  $(document).ready(function(){
+    $('.materialboxed').materialbox();
+    instance.open();
+  });
 </script>
-<br>
+<br><br><br><br>
   <a href="func/func2.html"><img src="camera2.png"id="fixedbutton"></a>
 
 
