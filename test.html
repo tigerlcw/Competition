@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Look At Me</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/css?family=Jua|Nanum+Gothic:700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+ 
+
+  <!-- style-->
+  <style>
+  a{ font-family: 'Jua', sans-serif;
+  }
+  h2{font-family: 'Jua', sans-serif;
+  color:#512da8;
+  }
+  h3{font-family: 'Jua', sans-serif;
+  color: black;
+  }
+  
+  h5{font-family: 'Jua', sans-serif;
+  color: black;
+
+  }
+  #fixedbutton {
+    height:75px;
+	  width: 20%;
+    position: fixed;
+	  left: 80%;
+	  bottom: 0;
+  }
+  
+  </style>
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+  <script src="js/materialize.js"></script>
+  <script src="js/init.js"></script>
+</head>
+
+<body>
+    <nav class="white" role="navigation">
+        <div class="nav-wrapper container">
+          <a id="logo-container" href="index.html" class="brand-logo">Look At Me</a>
+          <ul id="nav-mobile" class="sidenav">
+              <li><a href="test.html">색각 이상검사</a></li>
+              <li><a href="map.html">병원찾기</a></li>
+              <li><a href="freetalk.html">자유게시판</a></li>
+              <li><a href="login.html">Look At Me 소개</a></li>
+            </ul>
+    
+          <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons black-text">menu</i></a>
+        </div>
+      </nav>
+  <br>
+    <h5 align="center">무엇으로 보이시나요?<br>해당 사진을 클릭하시면<br>정답과 증상을 알려드려요!</h5>
+    <br>
+
+    <div class="carousel carousel-slider">
+        <a class="carousel-item" href="#one!"><img src="testimg/1_15.jpg"></a>
+        <a class="carousel-item" href="#two!"><img src="testimg/2_5.jpg"></a>
+        <a class="carousel-item" href="#three!"><img src="testimg/3_75.jpg"></a>
+        <a class="carousel-item" href="#four!"><img src="testimg/4_8.jpg"></a>
+        <a class="carousel-item" href="#one!"><img src="testimg/5_.jpg"></a>
+        <a class="carousel-item" href="#two!"><img src="testimg/8_7.jpg"></a>
+        <a class="carousel-item" href="#three!"><img src="testimg/9_5.jpg"></a>
+        <a class="carousel-item" href="#four!"><img src="testimg/10_66.jpg"></a>
+        <a class="carousel-item" href="#four!"><img src="testimg/11_line.jpg"></a>
+      </div>
+<script>
+  $('.carousel.carousel-slider').carousel({fullWidth: true});
+</script>
+<br>
+  <a href="func/func2.html"><img src="camera2.png"id="fixedbutton"></a>
+
+
+</body>
+
+
+
+
+</html>
