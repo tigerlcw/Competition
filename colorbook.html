@@ -21,12 +21,12 @@
         h3{font-family: 'Jua', sans-serif;
         color: black;
         }
-        
+
         h5{font-family: 'Jua', sans-serif;
         color: black;
-      
+
         }
-      
+
         h6{font-family: 'Nanum Gothic'
         ;}
         #fixedbutton {
@@ -36,11 +36,11 @@
             left: 80%;
             bottom: 0;
         }
-        
+
         </style>
         <!--  Scripts-->
         <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-      
+
         <script src="js/materialize.js"></script>
         <script src="js/init.js"></script>
       </head>
@@ -54,7 +54,7 @@
                       <li><a href="freetalk.html">자유게시판</a></li>
                       <li><a href="login.html">Look At Me 소개</a></li>
                     </ul>
-            
+
                   <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons black-text">menu</i></a>
                 </div>
               </nav>
@@ -63,19 +63,20 @@
                     <fieldset>
                     <center><legend style="color: Red"><h1>Color Dictionary</h1></legend></center>
                     <div>
-            
+
                       <center><input type="text" id ="txt" value="" ><button type="button" onclick="timkiem()" >Search</button></center>
                             <center><select id="dtn"></center>
                               <option value = "ev">English</option>
                               <option value = "ko">한국어</option>
                           </select><br><br>
+                          <center><legend style="color: blcak"><h5>영어는 소문자, 한국어는 ~색으로 입력해 주세요. 예시 ( 빨간색, 노란색</h5></legend></center>
                           <p id="result"></p>
                       </div>
                     </fieldset>
                 </form>
 <script>
-    let Eng = ["red","black","white","pink","yellow","green","blue","purple","사과, 립스틱, 수박","콩","배","복숭아","바나나","청포도, 아오리사과","파란과일은 없습니다.","포도, 복분자"];
-    let ko = ["빨강","검정","흰색","핑크","노랑색","초록색","파랑색","보라색","사과, 립스틱, 수박","콩","배","복숭아","바나나","청포도, 아오리사과","파란과일은 없습니다.","포도, 복분자"];
+    let Eng = ["red","orange","yellow","green","blue","navy","purple","white","black","사과, 딸기, 오예스","오렌지, 귤, 비타 500","바나나, 레몬, 비타민 C","청포도, 라임","파란과일은 없습니다.","블루베리, ","포도, 복분자","배","검은색 과일은 없습니다."];
+    let ko = ["빨간색","주황색","노란색","초록색","파란색","남색","보라색","하얀색","검은색","사과, 딸기, 오예스","오렌지, 귤, 비타 500","바나나, 레몬, 비타민 C","청포도, 라임","파란과일은 없습니다.","블루베리, ","포도, 복분자","배","검은색 과일은 없습니다."];
 
 
     function timkiem() {
@@ -85,7 +86,7 @@
                 let wordEng = 0;
                 for (let i = 0; i < Eng.length; i++){
                     if (language === Eng[i]){
-                        document.getElementById("result").innerHTML = Eng[i+8];
+                        document.getElementById("result").innerHTML = Eng[i+9];
                         wordEng++;
                     }
                 }
@@ -97,12 +98,12 @@
               let wordko = 0;
                   for (let i = 0; i < ko.length; i++){
                       if (language === ko[i]){
-                          document.getElementById("result").innerHTML = ko[i+8];
+                          document.getElementById("result").innerHTML = ko[i+9];
                           wordko++;
                       }
                   }
                   if (wordko != 1){
-                      document.getElementById("result").innerHTML = "님 없음!!!";
+                      document.getElementById("result").innerHTML = "제대로된 값을 입력해 주세요!!!";
                   }
                   break;
           }
