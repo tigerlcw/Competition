@@ -29,3 +29,6 @@
  김유빈 - 보고서 작성 및 검수
 
  우리 아이 안심 페이의 아이디어 저작권은 [ 팀 : 부기온앤온에 있음을 알립니다. ]
+ 
+ # 결과
+ https://drive.google.com/drive/folders/14WfjbNPLxomuh8gLHyRG2ChlnMwNc5A1?usp=sharing
