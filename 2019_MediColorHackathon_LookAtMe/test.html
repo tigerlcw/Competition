@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Look At Me</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/css?family=Jua|Nanum+Gothic:700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+ 
+
+  <!-- style-->
+  <style>
+  a{ font-family: 'Jua', sans-serif;
+  }
+  h2{font-family: 'Jua', sans-serif;
+  color:#512da8;
+  }
+  h3{font-family: 'Jua', sans-serif;
+  color: black;
+  }
+  
+  h5{font-family: 'Jua', sans-serif;
+  color: black;
+
+  }
+
+  h6{font-family: 'Nanum Gothic'
+  ;}
+    #fixedbutton {
+    height:75px;
+	  width: 65px;
+    position: fixed;
+	  left: 50%;
+	  bottom: 100px;
+  }
+  
+  </style>
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+  <script src="js/materialize.js"></script>
+  <script src="js/init.js"></script>
+</head>
+
+<body>
+    <nav class="white" role="navigation">
+        <div class="nav-wrapper container">
+          <a id="logo-container" href="index.html" class="brand-logo">Look At Me</a>
+          <ul id="nav-mobile" class="sidenav">
+              <li><a href="test.html">색각 이상검사</a></li>
+              <li><a href="map.html">병원찾기</a></li>
+              <li><a href="freetalk.html">자유게시판</a></li>
+              <li><a href="login.html">Look At Me 소개</a></li>
+            </ul>
+    
+          <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons black-text">menu</i></a>
+        </div>
+      </nav>
+    <h6 align="center">무엇으로 보이시나요?<br>해당 사진을 클릭하시면<br>정답과 증상을 알려드려요!</h6>
+    <h6 align="center">* 테스트는 테스트 일뿐 정확한 검진은<br>꼭! 병원에서 진단을 받아보세요. *</h6>
+  
+
+  <img class="materialboxed" data-caption="제1표.정상자나 색각이상자나 모두 15로 읽는다." width="45%" src="testimg/1_15.jpg">
+  <br>
+  <img class="materialboxed" data-caption="제2표.정상자는 5로 읽고, 제1 및 제2 색각이상자(이하 이상자로 약기함)는 3으로 읽으며, 전색약 색맹자는 읽지 못한다." width="45%" src="testimg/2_5.jpg">
+  <br>
+  <img class="materialboxed" data-caption="제3표.정상자는 75로 읽고, 이상자는 16으로 읽으며, 전색약 색맹자는 읽지 못한다." width="45%" src="testimg/3_75.jpg">
+  <br>
+  <img class="materialboxed" data-caption="제4표.정상자는 8로 읽고, 이상자는 5로 읽으며, 전색약 색맹자는 읽지 못한다." width="45%" src="testimg/4_8.jpg">
+  <br>
+  <img class="materialboxed" data-caption="제5표.정상자는 48로 읽고, 이상자는 13으로 읽으며, 전색약 색맹자는 읽지 못한다." width="45%" src="testimg/5_.jpg">
+  <br>
+  <img class="materialboxed" data-caption="제8표.정상자는 7로 읽으나, 이상자 및 전색약 색맹자는 읽지 못한다." width="45%" src="testimg/8_7.jpg">
+  <br>
+  <img class="materialboxed" data-caption="제9표.정상자 및 전색약 색맹자는 읽지 못하나, 이상자는 대부분 5로 읽는다." width="45%" src="testimg/9_5.jpg">
+  <br>
+  <img class="materialboxed" data-caption="제10표.정상자 및 이상자는 66으로 읽으나, 제3(청황) 색각이상 및 전색약 색맹자는 읽지 못한다." width="45%" src="testimg/10_66.jpg">
+  <br>
+  <img class="materialboxed" data-caption="제11표.정상자는 녹색계통의 색으로 된 곡선을 완전히 그릴 수 있으나, 이상자는 청녹색 곡선만 보여서 지름길로 곡선을 그린다. 전색약 색맹자는 이 곡선을 그리지 못한다." width="45%" src="testimg/11_line.jpg">
+
+
+<script>
+  $('.carousel.carousel-slider').carousel({fullWidth: true});
+  $(document).ready(function(){
+    $('.materialboxed').materialbox();
+    instance.open();
+  });
+</script>
+<br><br>
+<div class="container">
+  <a href="func/func2.html"><img src="camera2.png"id="fixedbutton"></a>
+  <a href="colorbook.html"class="btn-floating waves-effect waves-light red"><i class="material-icons">add</i></a>
+  
+</div>
+  <br>
+</body>
+
+
+
+
+</html>

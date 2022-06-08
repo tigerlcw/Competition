@@ -1,0 +1,320 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Look At Me</title>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<!-- CSS  -->
+<link href="https://fonts.googleapis.com/css?family=Jua|Nanum+Gothic:700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link href="../css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+<link href="../css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+
+
+
+<!--  Scripts-->
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="../js/materialize.js"></script>
+<script src="../js/init.js"></script>
+</head>
+<body>
+<style>
+
+
+body {
+  background-repeat: repeat repeat;
+  background-attachment: local;
+  overflow-y: hidden;
+}
+body div.toolbar {
+  height: 3em;
+  left: 0;
+  right: 0;
+  display: block;
+  box-shadow: 0 0 1em;
+  box-sizing: border-box;
+}
+
+body div.toolbar-bottom div#outputColor {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: .5em;
+  box-sizing: border-box;
+  background: #fff;
+  color: #888888;
+  font-size: 1em;
+  text-align: center;
+  line-height: 1;
+}
+
+
+body .canvasWrapper {
+  margin: 3em 0;
+
+  max-width: 350px;
+  max-height: calc(100vh - 2*3em);
+  box-sizing: border-box;
+  overflow: auto;
+}
+body .canvasWrapper canvas {
+  margin: 0;
+  cursor: crosshair;
+  image-rendering: optimizeSpeed;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: -o-crisp-edges;
+  image-rendering: crisp-edges;
+  -ms-interpolation-mode: nearest-neighbor;
+}
+
+
+a{ font-family: 'Jua', sans-serif;
+  }
+  h2{font-family: 'Jua', sans-serif;
+  color:#512da8;
+  }
+  h3{font-family: 'Jua', sans-serif;
+  color: black;
+  }
+  
+  h5{font-family: 'Jua', sans-serif;
+  color: black;
+
+  }
+
+</style>
+
+<nav class="white" role="navigation">
+    <div class="nav-wrapper container">
+      <a id="logo-container" href="../index.html" class="brand-logo">Look At Me</a>
+      <ul id="nav-mobile" class="sidenav">
+          <li><a href="../test.html">색각 이상검사</a></li>
+          <li><a href="../map.html">병원찾기</a></li>
+          <li><a href="../freetalk.html">자유게시판</a></li>
+          <li><a href="../login.html">Look At Me 소개</a></li>
+        </ul>
+      <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons black-text">menu</i></a>
+    </div>
+  </nav>
+
+<br>
+<div class="container">
+
+    <div>
+        <input class="" type="file" id="inputFile" accept="image/*" capture/>
+        <input style="margin-top: 7px;" type="text" id="inputUrl" placeholder="웹사이트상의 이미지 주소" />
+        <button class="" id="inputSubmit" title="Submit your image">업로드</button>
+        <button class="" id="help" title="Help">사용법</button>
+    </div>
+<br>
+    <div class="toolbar toolbar-bottom">
+        <div id="outputColor">Upload an image<br />Click Submit</div>
+        <br>
+        <button id="prevColor" title="Previous Color">&#60;</button>
+        <button id="nextColor" title="Next Color">&#62;</button>
+    </div>
+<br>
+    <div class="canvasWrapper">
+        <canvas id="canvas"></canvas>
+    </div>
+
+    <br><br>
+   
+<style>
+.buttoncomm:disabled {
+    background-color: #d3d3d3!important;
+  border-color:#d3d3d3!important;
+}
+.alert-danger {
+    color: #150613!important;
+    background-color: #aa62a4!important;
+    border-color: #150613!important;}
+</style>
+
+<br>
+</div>
+
+<br><br>
+
+<script>
+var canvas = document.getElementById('canvas'),
+    ctx = canvas.getContext('2d'),
+    inputFile = document.getElementById('inputFile'),
+    inputUrl = document.getElementById('inputUrl'),
+    btnSubmit = document.getElementById('inputSubmit'),
+    outputColor = document.getElementById('outputColor'),
+    prevColor = document.getElementById('prevColor'),
+    nextColor = document.getElementById('nextColor'),
+    colorLog = [],
+    currLog = 0,
+    image = document.createElement('img'),
+    x = 0,
+    y = 0,
+    zoom = 1,
+    data = [0, 0, 0, 0],
+    rgb = [0, 0, 0],
+    hex = [0x00, 0x00, 0x00],
+    mouse = {x: 0, y: 0};
+
+
+
+/* INITIALISATION */
+
+function init() {
+    ctx.webkitImageSmoothingEnabled = false;
+    ctx.mozImageSmoothingEnabled = false;
+    ctx.msImageSmoothingEnabled = false;
+    ctx.imageSmoothingEnabled = false;
+
+    canvas.width = 200;
+    canvas.height = 200;
+
+    ctx.fillStyle = 'white';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    inputFile.type = 'file';
+    inputFile.accept = 'image/*';
+}
+
+
+
+/* SUBMIT THE IMAGE */
+
+btnSubmit.onclick = function (ev) {
+    if (inputFile.files.length === 0) {
+
+        image.src = inputUrl.value;
+
+    } else {
+
+        var reader = new FileReader();
+        reader.onload = function (ev) {
+            image.src = reader.result;
+            
+            
+        };
+        reader.readAsDataURL(inputFile.files[0]);
+
+    }
+
+    image.crossOrigin = 'Anonymous';
+
+    image.onload = function (ev) {
+        try {
+            drawImage();
+        } catch (err) {
+            console.log('uh oh');
+        }
+    };
+};
+
+
+
+/* COLOR PICKING */
+
+canvas.onmousemove = function (ev) {
+    mouse = getMousePos(ev, this);
+    data = ctx.getImageData(mouse.x, mouse.y, 1, 1).data;
+    updateColor();
+    returnColor(false, false);
+};
+
+canvas.onclick = function (ev) {
+    currLog = -1;
+    returnColor(true, false);
+};
+
+
+
+/* LOG MANAGEMENT */
+
+prevColor.onclick = function (ev) {
+    currLog -= 1;
+    currLog = currLog < 0 ? 0 : currLog;
+    returnColor(false, true);
+};
+
+nextColor.onclick = function (ev) {
+    currLog += 1;
+    currLog = currLog > colorLog.length-1 ? colorLog.length-1 : currLog;
+    returnColor(false, true);
+};
+
+
+
+/* CANVAS MANAGEMENT */
+
+function drawImage() { // 이미지 출력
+    canvas.width = image.width;
+    canvas.height = image.height;
+    ctx.drawImage(image, 0, 0, 350, 480); //박스 가로 세로 / 이미지 가로 세로 리사이징
+}
+
+
+
+/* UTILITY FUNCTIONS */
+
+function getMousePos(ev, elmt) {
+    var mouse = {};
+    var elmtPos = elmt.getBoundingClientRect();
+    mouse.x = ev.clientX - Math.round(elmtPos.left);
+    mouse.y = ev.clientY - Math.round(elmtPos.top);
+    return mouse;
+}
+
+function toHex (n) {
+    var hex = n.toString(16);
+    return (hex.length === 1) ? '0' + hex : hex;
+}
+
+function updateColor() {
+    for (var i = 0; i < 3; i++) {
+        rgb[i] = data[i];
+        hex[i] = toHex(data[i]);
+    }
+}
+
+
+
+/* OUTPUT TO THE USER */
+
+function returnColor(doLog, showLog) {
+    if (!!showLog) {
+        var rgbString = colorLog[currLog].rgb;
+        var hexString = colorLog[currLog].hex;
+        var n = colorLog[currLog].n;
+    } else {
+        var rgbString = 'RGB(' + rgb[0] + ', ' + rgb[1] + ', ' + rgb[2] + ')';
+        var hexString = '#' + hex[0] + hex[1] + hex[2];
+        var n = '선택 부분의 RGB';
+    }
+
+    outputColor.innerHTML = '[' + n + '] ' + rgbString + '<br>'+'헥사코드 값:' + hexString;
+    outputColor.style.background = hexString;
+
+    if (doLog === true) {
+        var x = {};
+        x.rgb = rgbString;
+        x.hex = hexString;
+        x.n = 'Color ' + colorLog.length;
+        colorLog.unshift(x);
+    }
+}
+
+
+
+document.getElementById('help').onclick = function () {
+    alert('1. 파일선택 2. 업로드 3. 알고싶은 색 부분을 터치! 4. 상단 박스에서 해당 색의 정보를 알려줍니다.');
+};
+
+window.onload = function (ev) {
+    init();
+};
+</script>
+
+</body>
+</html>

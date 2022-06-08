@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Look At Me</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/css?family=Jua|Nanum+Gothic:700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+ 
+  <!-- style-->
+  <style>  
+  a{ font-family: 'Jua', sans-serif;
+  }
+  h2{font-family: 'Jua', sans-serif;
+
+  }
+  h3{font-family: 'Jua', sans-serif;
+  color: black;
+  }
+  
+  h4{font-family: 'Jua', sans-serif;
+  color: black;
+  }
+
+  h5{font-family: 'Jua', sans-serif;
+  color: black;
+
+  }
+
+
+
+
+  #fixedbutton {
+    height:75px;
+	  width: 65px;
+    position: fixed;
+	  left: 50%;
+	  bottom: 100px;
+  }
+  
+  </style>
+    <!--  Scripts-->
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="js/materialize.js"></script>
+    <script src="js/init.js"></script>
+
+    
+</head>
+
+<body>
+  
+  <nav class="white" role="navigation">
+    <div class="nav-wrapper container">
+      <a id="logo-container" href="index.html" class="brand-logo">Look At Me</a>
+    
+      <ul class="right hide-on-med-and-down">
+          <li><a href="test.html">색각 이상검사</a></li>
+          <li><a href="map.html">병원찾기</a></li>
+          <li><a href="freetalk.html">자유게시판</a></li>
+          <li><a href="login.html">Look At Me 소개</a></li>
+        </ul>
+
+        <ul id="nav-mobile" class="sidenav">
+          <li><a href="test.html">색각 이상검사</a></li>
+          <li><a href="map.html">병원찾기</a></li>
+          <li><a href="freetalk.html">자유게시판</a></li>
+          <li><a href="login.html">Look At Me 소개</a></li>
+        </ul>
+
+      <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons black-text">menu</i></a>
+    </div>
+  </nav>
+    <a href="func/func2.html"><img src="camera2.png"id="fixedbutton"></a>
+  
+        <div class="slider">
+            <ul class="slides">
+              <li>
+                <img src="background1.png"> <!-- random image -->
+                <div class="caption center-align">
+                  <h4 style="line-height: 1em">내가 대신 보여줄게</h4>
+                  <h4 style="line-height: 1em">나를 봐</h4>
+                  <h3>Look At Me</h3>
+                </div>
+              </li>
+              <li>
+                <img src="background2.png"> <!-- random image -->
+                <div class="caption left-align">
+                    <h5 style="line-height: 2em">
+                        우리의 Look at Me <br>애플리케이션은<br>한식 색각검사 표를 기준으로 <br>테스트를 할 수 있습니다.</h5>
+                </div>
+              </li>
+              <li>
+                <img src="background3.png"> <!-- random image -->
+                <div class="caption right-align">
+                  <h5 style="line-height: 2em">
+                        자신이 위치해 있는 곳을 <br>기점으로 안과병원을<br>찾아 줍니다. </h5>
+                
+                </div>
+              </li>
+              <li>
+                <img src="background4.png"> <!-- random image -->
+                <div class="caption center-align">
+                    <h5 style="line-height: 2em">
+                        비슷하거나 같은 증상이 있는<br>사람들과 서로 소통해보세요!</h5>
+                </div>
+              </li>
+            </ul>
+          </div>
+        <div class="container">
+            <div class="section">
+              <!--   Icon Section   -->
+              <div class="row">
+                <div class="col s12 m4">
+                  <div class="icon-block">
+                    <h2 style="color:black" class="center"><i class="material-icons">photo_camera</i></h2>
+                    <h5 class="center"style="line-height: 1.25em">하단의 아이콘을 클릭해서<br>이미지를 업로드 해보세요!<br>색을 알려줄거예요.</h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+  <script>
+  $(document).ready(function(){
+    $('.slider').slider();
+  });
+</script>
+  </body>
+</html>
