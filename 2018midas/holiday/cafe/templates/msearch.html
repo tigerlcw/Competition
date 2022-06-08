@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search</title>
+</head>
+<body>
+    <form method ="POST"> {% csrf_token %}
+        start:
+        <input type = "date" name = "sday"/>
+        <br/>
+        end:
+        <input type = "date" name = "eday"/>
+        <br/>
+        <input type = "submit"/>
+    </form>
+</body>
+</html>

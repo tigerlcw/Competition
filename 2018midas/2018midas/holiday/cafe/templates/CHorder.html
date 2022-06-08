@@ -1,0 +1,204 @@
+<html>
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+    <body>
+        <!-- coffee 추가 -->
+        <form class="col s12" id="form"> {% csrf_token %}
+            <div id="addedCoffee">
+                <div class="input-field col s12">
+                    <select>
+                        <option value="" disabled selected>커피를 고르세요</option>
+                        <option value="americano">아메리카노</option>
+                        <option value="coffeLatte">커피라떼</option>
+                        <option value="espresso">에스프레소</option>
+                    </select>
+                    <label>커피선택</label>
+                </div>
+                <div class="row"></div>
+                <label>
+                    <input name="group1" type="radio" />
+                    <span>ICE</span>
+                </label>
+                 <div>
+                <label>
+                    <input name="group1" type="radio" />
+                    <span>HOT</span>
+                </label>
+                </div>
+            </div>
+            <button value="추가" onclick="addCoffeeForm()"> 추가 </button>
+            </div>
+            <br><br>
+        <!-- </form> -->
+        <p style="border-width:3px; border-color:gray; border-style:dotted;"></p>
+        <!-- 음료 추가 -->
+        <!-- <form class="col s12" > -->
+            <div id="addedBeverage">
+                <div class="input-field col s12">
+                    <select>
+                        <option value="" disabled selected>음료를 고르세요</option>
+                        <option value="americano">자몽에이드</option>
+                        <option value="coffeLatte">레몬에이드</option>
+                    </select>
+                    <label>음료선택</label>
+                </div>
+                <div class="row"></div>
+                <label>
+                    <input name="group1" type="radio" />
+                    <span>ICE</span>
+                </label>
+                    <div>
+                <label>
+                    <input name="group1" type="radio" />
+                    <span>HOT</span>
+                </label>
+                </div>
+            </div>
+            <button value="추가" onclick="addBeverageForm()"> 추가 </button>
+            </div>
+        <!-- </form> -->
+        <p style="border-width:3px; border-color:gray; border-style:dotted;"></p>
+        <!-- 디저트 추가 -->
+        <!-- <form class="col s12" > -->
+                <div id="addedDessert">
+                    <div class="input-field col s12">
+                        <select>
+                            <option value="" disabled selected>디저트 종류를 고르세요</option>
+                            <option value="honeyBread">허니브레드</option>
+                            <option value="waffle">와플</option>
+                        </select>
+                        <label>디저트 선택</label>
+                    </div>
+                    <div class="row"></div>
+                </div>
+                <button value="추가" onclick="addDessertForm()"> 추가 </button>
+                </div>
+            </form>
+            <button class="post" value="주문하기" onclick="postOrder()"> 주문하기 </button>
+            
+        
+        <!-- 디저트 추가 -->
+
+        <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <!-- <script src="js/materialize.js"></script> -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+        <script> 
+            function postOrder(){
+                $(document).ready(function(){
+                    $.ajax({
+                        url: "http://localhost:8000/MakeOrder/",
+                        type: "POST",
+                        dataType: "json",
+                        data: $("#form").serialize(),
+                        success: function(result){
+                            console.log(result);
+                        },
+                        error: function(xhr, resp, text){
+                            console.log(xhr, resp, text);
+                        }
+                    })
+                })
+            }
+        // Or with jQuery
+            function addCoffeeForm(){
+                var addedFormDiv = document.getElementById("addedCoffee");
+                var str = "";
+                str+="<select>"+
+                        "<option value='' disabled selected>커피를 고르세요</option>" +
+                        "<option value='americano'>아메리카노</option>"+
+                        "<option value='coffeLatte'>커피라떼</option>"+
+                        "<option value='espresso'>에스프레소</option>"+
+                    "</select>"+
+                    "<label>추가 커피</label>"+
+                    "<label>"+
+                        "<input name='group1' type='radio' />"+
+                        "<span>ICE</span>"+
+                    "</label>"+
+                    "<div>"+
+                    "<label>"+
+                        "<input name='group1' type='radio' />"+
+                        "<span>HOT</span>"+
+                    "</label>"+
+                    "</div>"
+
+                // 추가할 폼(에 들어갈 HTML)
+                var addedDiv = document.createElement("div"); // 폼 생성
+                addedDiv.innerHTML  = str; // 폼 Div안에 HTML삽입
+                addedFormDiv.appendChild(addedDiv); // 삽입할 DIV에 생성한 폼 삽입
+                // 다음 페이지에 몇개의 폼을 넘기는지 전달하기 위해 히든 폼에 카운트 저장
+                $(document).ready(function(){
+                        $('select').formSelect();
+                });
+           }
+
+           //beverage adding function
+           function addBeverageForm(){
+            var addedFormDiv = document.getElementById("addedBeverage");
+                var str = "";
+                str+="<select>"+
+                        "<option value='' disabled selected>음료를 고르세요</option>" +
+                        "<option value='grapeFruit'>자몽에이드</option>"+
+                        "<option value='lemon'>레몬에이드</option>"+
+                    "</select>"+
+                    "<label>추가 음료</label>"+
+                    "<label>"+
+                        "<input name='group1' type='radio' />"+
+                        "<span>ICE</span>"+
+                    "</label>"+
+                    "<div>"+
+                    "<label>"+
+                        "<input name='group1' type='radio' />"+
+                        "<span>HOT</span>"+
+                    "</label>"+
+                    "</div>"
+
+                // 추가할 폼(에 들어갈 HTML)
+                var addedDiv = document.createElement("div"); // 폼 생성
+                addedDiv.innerHTML  = str; // 폼 Div안에 HTML삽입
+                addedFormDiv.appendChild(addedDiv); // 삽입할 DIV에 생성한 폼 삽입
+                // 다음 페이지에 몇개의 폼을 넘기는지 전달하기 위해 히든 폼에 카운트 저장
+                $(document).ready(function(){
+                        $('select').formSelect();
+                });
+           }
+
+           //add Dessert
+           function addDessertForm(){
+            var addedFormDiv = document.getElementById("addedDessert");
+                var str = "";
+                str+="<select>"+
+                        "<option value='' disabled selected>디저트 종류를 고르세요</option>" +
+                        "<option value='grapeFruit'>허니브레드</option>"+
+                        "<option value='lemon'>와플</option>"+
+                    "</select>"+
+                    "<label>추가 디저트</label>";
+
+                // 추가할 폼(에 들어갈 HTML)
+                var addedDiv = document.createElement("div"); // 폼 생성
+                addedDiv.innerHTML  = str; // 폼 Div안에 HTML삽입
+                addedFormDiv.appendChild(addedDiv); // 삽입할 DIV에 생성한 폼 삽입
+                // 다음 페이지에 몇개의 폼을 넘기는지 전달하기 위해 히든 폼에 카운트 저장
+                $(document).ready(function(){
+                        $('select').formSelect();
+                });
+           }
+
+           $(document).ready(function(){
+                $('select').formSelect();
+            });
+
+        </script>
+    </body>
+    
+</html>
+<style>
+body {
+    max-width: 560px;
+    margin-right: auto;
+    margin-bottom: 60px;
+    margin-left: auto;
+}
+
+
+</style>

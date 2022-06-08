@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>홀리데이 - 실시간</title>
+
+  <!-- CSS  -->
+  <link rel="shortcut icon"href="icon.png">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+
+<body>
+  <video id="video" width="100%" height="100%" autoplay></video>
+  <center>
+        <button id="shot"class="btn-large waves-effect waves-light teal">스크린샷 찍기</button>
+        <a href="https://4407662b.ngrok.io" id="download-button" class="btn-large waves-effect waves-light teal">뒤로가기</a>
+        <button id="record" class="btn-large waves-effect waves-light teal"onclick="startRecording">영상 저장하기</button>
+        <br><br>
+    </center>
+    <canvas id="canvas" width="1280px" height="720px"></canvas>
+    
+    
+    <script>
+        //web api web cam view
+        var video = document.querySelector('video');
+        var constraints = window.constraints = {
+            audio: true,//audio true
+            video: true//video true
+        };
+        navigator.mediaDevices.getUserMedia(constraints)
+            .then(function(stream) {
+                var videoTracks = stream.getVideoTracks();
+                window.stream = stream;
+                video.srcObject = stream;
+            });
+    
+        var canvas = document.getElementById('canvas');
+        var context = canvas.getContext('2d');
+        var video = document.getElementById('video');
+    
+        document.getElementById("shot").addEventListener("click", function() {
+            context.drawImage(video, 50, 50, 480, 320);
+        });
+    
+    
+        //video save
+    function onVideoFail(e) {
+        console.log('webcam fail!', e);
+      };
+    
+    function hasGetUserMedia() {
+      // Note: Opera is unprefixed.
+      return !!(navigator.getUserMedia || navigator.webkitGetUserMedia ||
+                navigator.mozGetUserMedia || navigator.msGetUserMedia);
+    }
+    
+    if (hasGetUserMedia()) {
+      // Good to go!
+    } else {
+      alert('getUserMedia() is not supported in your browser');
+    }
+    
+    window.URL = window.URL || window.webkitURL;
+    navigator.getUserMedia  = navigator.getUserMedia || 
+                             navigator.webkitGetUserMedia ||
+                              navigator.mozGetUserMedia || 
+                               navigator.msGetUserMedia;
+    
+    var video = document.querySelector('video');
+    var streamRecorder;
+    var webcamstream;
+    
+    if (navigator.getUserMedia) {
+      navigator.getUserMedia({audio: true, video: true}, function(stream) {
+        video.src = window.URL.createObjectURL(stream);
+        webcamstream = stream;
+    //  streamrecorder = webcamstream.record();
+      }, onVideoFail);
+    } else {
+        alert ('failed');
+    }
+    
+    function startRecording() {
+        streamRecorder = getUserMedia;
+        setTimeout(stopRecording, 10000);
+    }
+    function stopRecording() {
+        streamRecorder.getRecordedData(postVideoToServer);
+    }
+    function postVideoToServer(videoblob) {
+    
+        var data = {};
+        data.video = videoblob;
+        data.metadata = 'test metadata';
+        data.action = "upload_video";
+        jQuery.get("https://36ebbc52.ngrok.io", data, onUploadSuccess);
+    }
+    function onUploadSuccess() {
+        alert ('video uploaded');
+    }
+    
+    </script>
+
+</body>
+
+<script>
+prompt("카페 내부의 상황입니다. 영상을 무단으로 저장시 법적 처벌을 받을 수 있습니다.","숙지하였습니다.")
+</script>
+
+</html>

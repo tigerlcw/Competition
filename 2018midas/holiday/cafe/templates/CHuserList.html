@@ -1,0 +1,46 @@
+<html>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+    <body>
+        <div id="target">
+            <table class="table table-hover">
+            <thead>
+                <tr>
+                <th scope="col">아이디</th>
+                <th scope="col">성명</th>
+                <th scope="col">소속명</th>
+                <th scope="col">생년월일</th>
+                <th scope="col">연락처</th>  
+                <th scope="col">관리자여부</th>              
+                </tr>
+            </thead>
+            <tbody>
+                {% for cur in res %}
+                <tr>
+                <td>{{cur.Email}}</td>
+                <td>{{cur.Username}}</td>
+                <td>{{cur.Partname}}</td>
+                <td>{{cur.Bdate}}</td>
+                <td>{{cur.Phonenumber}}</td>
+                <td>{{cur.isAdmin}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+            </table>
+        </div>
+        <form method="POST"> {% csrf_token %}
+            <button type="submit">추가</button>
+        </form>  
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+    </body>
+</html>
+<style>
+body {
+    max-width: 560px;
+    margin-right: auto;
+    margin-bottom: 60px;
+    margin-left: auto;
+}
+</style>
+    

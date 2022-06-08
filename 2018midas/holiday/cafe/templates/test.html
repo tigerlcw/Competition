@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Select</title>
+</head>
+<body>
+    {% for cur in res %}
+    <p>
+        {{cur.Mail}},
+        {{cur.Odate}},
+        {{cur.Resdate}},
+        {{cur.Restime}},
+        {{cur.Price}},
+        {{cur.Details}},
+        {{cur.Stats}}
+    </p>
+    {% endfor %}
+
+    <form action="/employee" method="GET">
+        <button type="submit">Back</button>
+    </form>
+</body>
+</html>
