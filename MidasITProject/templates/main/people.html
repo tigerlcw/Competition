@@ -1,0 +1,136 @@
+{% extends "main/base.html" %}
+{% load staticfiles %}
+{% block style %}
+<link rel ="stylesheet" href="{% static 'css/people.css' %}" />
+{% endblock %}
+{% block content %}
+<div class="bottom-tab">
+	<ul class="tabs">
+		<li class="tab col s3"><a  href="/" id="feed"><i class="material-icons">dashboard</i></a></li>
+		<li class="tab col s3"><a href= "/people" class="active"><i class="material-icons">group</i></a></li>
+		<li class="tab col s3"><a href="/routine"  id="routine"><i class="material-icons">directions_run</i></a></li>
+		<li class="tab col s3"><a href="/mypage"  id="mypage"><i class="material-icons">timelapse</i></a></li>
+	</ul>
+</div>
+<div class="sub-tab">
+	<div id="search" class="col s12">	
+		<nav>
+			<div class="nav-wrapper">
+				<form action="/search" method="GET">
+					<div class="input-field">
+						<input id="search" name="search" type="search" required>
+						<label class="label-icon" for="search"><i class="material-icons">search</i></label>
+						<i class="material-icons">close</i>
+					</div>
+				</form>
+			</div>
+		</nav>
+	</div>
+</div>
+
+<div class="contain container">
+	<div class="row">
+		<div id="all" class="col s12 no-padding">
+			<div class="card">
+				<ul class="collection">
+{% for meal in meal_date %}
+				<div class="card" onclick="location.href='/meal_detail/{{meal.pk}}'">
+					<div class="card-content card-user">
+						<div class="row valign-wrapper no-margin">
+							<div class="col s5"  style="margin-left:10px;">
+								<p>
+									<span class="card-username black-text">
+										{{meal.date}}
+									</span>
+								</p>
+							</div>
+							<div class="col s4 text-right">
+								<span class="grey-text darken-3">{{meal.time}}</span>
+							</div>
+						</div>
+					</div>
+					<div class="card-action card-routine">
+						<img src="/media/{{ meal.image }}" width="100%" >
+						<br />
+						<span>{{meal.menu}}</span>
+					</div>
+					<div class="card-action">
+						<div class="row no-margin">
+							<div class="col s1">
+								<a><i class="material-icons timer-icon">local_dining</i></a>
+							</div>
+							<div class="col s3">
+								<span class="timer">{{meal.kcal}}kcal</span>
+							</div>
+							<div class="col s1">
+								<a><i class="material-icons timer-icon">favorite</i></a>
+							</div>
+							<div class="col s3">
+								<span class="timer">{{meal.favor}}</span>
+							</div>
+						</div>
+					</div>
+				</div>
+					{% endfor %}
+					{% for meal in meal_menu %}
+				<div class="card" onclick="location.href='/meal_detail/{{meal.pk}}'">
+					<div class="card-content card-user">
+						<div class="row valign-wrapper no-margin">
+							<div class="col s5"  style="margin-left:10px;">
+								<p>
+									<span class="card-username black-text">
+										{{meal.date}}
+									</span>
+								</p>
+							</div>
+							<div class="col s4 text-right">
+								<span class="grey-text darken-3">{{meal.time}}</span>
+							</div>
+						</div>
+					</div>
+					<div class="card-action card-routine">
+						<img src="/media/{{ meal.image }}" width="100%" >
+						<br />
+						<span>{{meal.menu}}</span>
+					</div>
+					<div class="card-action">
+						<div class="row no-margin">
+							<div class="col s1">
+								<a><i class="material-icons timer-icon">local_dining</i></a>
+							</div>
+							<div class="col s3">
+								<span class="timer">{{meal.kcal}}kcal</span>
+							</div>
+							<div class="col s1">
+								<a><i class="material-icons timer-icon">favorite</i></a>
+							</div>
+							<div class="col s3">
+								<span class="timer">{{meal.favor}}</span>
+							</div>
+						</div>
+					</div>
+				</div>
+					{% endfor %}
+				</ul>
+			</div>
+		</div>
+	</div>
+	
+</div>
+{% endblock %}
+
+{% block script %}
+<script type="text/javascript"> 
+	$(function(){
+		$('#feed').click(function(){
+			location.replace("/"); 
+		});
+		$('#routine').click(function(){
+			location.replace("/routine"); 
+		});
+		$('#mypage').click(function(){
+			location.replace("/mypage"); 
+		});
+	});
+</script>
+{% endblock %}

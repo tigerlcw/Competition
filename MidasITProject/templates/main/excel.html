@@ -1,0 +1,94 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+
+	<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<!--Import materialize.css-->
+	<!-- Compiled and minified CSS -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
+
+	<!-- Compiled and minified JavaScript -->
+
+	<!--Let browser know website is optimized for mobile-->
+	<meta name="theme-color" content="#111">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<link rel ="stylesheet" href="{% static 'css/base.css' %}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'css/exercise_timer.css' %}">
+	<body>
+		<nav>
+			<div class="nav-wrapper">
+				<a href="#" class="brand-logo center">엑셀, CSV 파일 업로드</a>
+				
+			</div>
+		</nav>
+		{% if request.user.is_superuser %}
+		<div class="contain container">
+			<div class="row">
+				<div class="col s12 card z-depth-4" style="margin-top:80px; padding:20px;">
+					<form enctype="multipart/form-data" action="./" method='post' >{% csrf_token %}
+
+			<h4 class=" center">아래에 파일을 업로드 해주세요</h2>
+						<div class="file-field input-field">
+							<div class="btn">
+								<span>File</span>
+								<input type="file" name="file">
+							</div>
+							<div class="file-path-wrapper">
+								<input class="file-path validate" type="text">
+							</div>
+						</div>
+						<button type="submit" class="btn">
+							hihi
+						</button>
+					</form>
+				</div>
+			</div>
+
+		</div>
+{% else %}
+<script type='text/javascript'>
+location.href='/';
+</script>
+{% endif %}
+
+		<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
+		{% block script %}
+
+		{% endblock %}
+
+		<script type="text/javascript"> 
+			$(function(){
+				$('#people').click(function(){
+					location.replace("/people"); 
+				});
+				$('#routine').click(function(){
+					location.replace("/routine"); 
+				});
+				$('#mypage').click(function(){
+					location.replace("/mypage"); 
+				});
+			});
+		</script>
+		<script src="{% static 'js/counter.min.js' %}"></script>
+		<script>
+			var timer = new Timer();
+			$('#chronoExample .startButton').click(function () {
+				timer.start();
+			});
+			$('#chronoExample .pauseButton').click(function () {
+				timer.pause();
+			});
+			$('#chronoExample .stopButton').click(function () {
+				timer.stop();
+			});
+			timer.addEventListener('secondsUpdated', function (e) {
+				$('#chronoExample .values').html(timer.getTimeValues().toString());
+			});
+			timer.addEventListener('started', function (e) {
+				$('#chronoExample .values').html(timer.getTimeValues().toString());
+			});
+		</script>
+	</body>
+	</html>

@@ -1,0 +1,56 @@
+.detail{
+	margin-top: 20px;
+}
+.save-btn{
+	background-color: #fff;
+	border-radius: 36px;
+	border: solid 1px #2b90d9;
+	box-shadow: none;
+	color: #2b90d9;
+}
+.like-btn{
+	background-color: #fff;
+	border-radius: 36px;
+	border: solid 1px #2b90d9;
+	box-shadow: none;
+	color: #2b90d9;
+}
+.time{
+	font-size: 40px;
+}
+.time-box{
+	border-right: solid 1px #ccc;
+}
+.buttons{
+	margin: 20px;
+}
+.list-box{
+	border: none;
+}
+.list{
+	border-bottom: none !important;
+}
+.list-name{
+	font-size: 18px;
+}
+.start-tab{
+	position: fixed !important;
+	bottom: -4px !important;
+	width: 100%;
+	box-shadow: 0px 0px 5px #bbb;
+	z-index: 3;
+	background-color:#2b90d9; 
+	color: #fff;
+	height: 54px;
+	font-size: 28px;
+	font-weight: 200;
+	border: none;
+}
+.profile{
+	width: 44px;
+	background-color: red;
+}
+.write-btn{
+	width: 100%;
+	background-color: red !important;
+}

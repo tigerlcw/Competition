@@ -1,0 +1,95 @@
+body{
+  background-color: #d9e1e8
+}
+nav {
+  background-color: #282c37;
+  position: fixed;
+  z-index: 2;
+}
+.card{
+  box-shadow: 0 0 1px #ddd;
+}
+.no-margin{
+  margin: 0 !important;
+}
+.text-right{
+  text-align: right;
+}
+.no-padding{
+  padding: 0 !important;
+}
+.bottom-tab{
+  position: fixed !important;
+  bottom: -4px !important;
+  width: 100%;
+  box-shadow: 0px 0px 5px #bbb;
+  z-index: 3;
+}
+.tabs {
+    position: relative;
+    overflow-x: auto;
+    overflow-y: hidden;
+    height: 48px;
+    width: 100%;
+    padding-top: 4px;
+    background-color: #fff;
+    margin: 0 auto;
+    white-space: nowrap;
+    z-index: 3;
+}
+.tabs .indicator {
+    position: absolute;
+    bottom: 0;
+    height: 2px;
+    background-color: #2b90d9;
+    will-change: left, right;
+}
+.tabs .tab a:hover, .tabs .tab a {
+    background-color: transparent;
+    color:  #9baec8;
+}
+.tabs .tab a:hover, .tabs .tab a.active {
+    background-color: transparent;
+    color: #2b90d9;
+}
+.sub-tab{
+  position: fixed !important;
+  top: 56px !important;
+  width: 100%;
+  box-shadow: 0px 0px 5px #bbb;
+  z-index: 3;
+}
+.contain{
+  padding-top: 110px;
+}
+.brand-logo{
+  font-size: 24px !important;
+  font-weight: 100;
+}
+.card-user{
+  padding-top: 12px !important;
+  padding-bottom: 8px !important;
+  padding-left: 4px !important;
+}
+.card-username{
+  font-size: 18px;
+  font-weight: 600;
+}
+.card-user-img{
+  padding: 5px;
+}
+.card-routine{
+  padding: 24px !important;
+   text-align: center;
+}
+.card-routine-title{
+  color: #2b90d9;
+  font-size: 24px;
+  font-weight: 800;
+}
+.timer-icon{
+  color: #2b90d9;
+}
+.timer{
+font-size: 16px !important;
+}

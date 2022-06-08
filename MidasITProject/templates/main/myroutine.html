@@ -1,0 +1,128 @@
+{% extends "main/base.html" %}
+{% load staticfiles %}
+{% block style %}
+<link rel ="stylesheet" href="{% static 'css/people.css' %}" />
+{% endblock %}
+{% block content %}
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+<div class="bottom-tab">
+	<ul class="tabs">
+		<li class="tab col s3"><a  href="/" id="feed"><i class="material-icons">dashboard</i></a></li>
+		<li class="tab col s3"><a href= "/people"><i class="material-icons">group</i></a></li>
+		<li class="tab col s3"><a href="/routine"  id="routine"  class="active"><i class="material-icons">directions_run</i></a></li>
+		<li class="tab col s3"><a href="/mypage"  id="mypage"><i class="material-icons">timelapse</i></a></li>
+	</ul>
+</div>
+<div class="sub-tab">
+	<ul class="tabs">
+		<li class="tab col s6"><a  href="#all" class="active">ALL</a></li>
+		<li class="tab col s6"><a href= "#search">MY</a></li>
+	</ul>
+</div>
+
+<div class="contain container">
+
+	<div class="row" id="all">
+		<div class="card">
+			<div class="card-action no-padding">
+				<div id="chart_div" style="width: 100%; height: 200px;"></div>
+
+			</div>
+		</div>
+		<div class="col s12 no-padding">
+			<ul class="collection with-header">
+				<li class="collection-item blue white-text center">이번달 인기식단</li>
+				<li class="collection-item"><span style="color:blue">1st</span>  {{meal_rank_1}}</li>
+				<li class="collection-item"><span style="color:blue">2nd</span>  {{meal_rank_2}}</li>
+				<li class="collection-item"><span style="color:blue">3th</span>  {{meal_rank_3}}</li>
+			</ul>	
+		</div>
+		<div id="all" class="col s12 no-padding">
+			{% for routine in routines%}
+			
+			<div class="card">
+				<div class="card-action">
+					<div id="chart_div2"></div>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+	<div id="search" class="col s12">
+		<div class="row">
+			<div class="card">
+				<div class="row">
+					<div class="col s12">
+						<table class="responsive-table">
+							<thead>
+								<tr>
+									<th>이름</th>
+									<th>이메일</th>
+									<th>총 이용 수</th>
+								</tr>
+							</thead>
+
+							<tbody>
+								<tr>
+									<td>Alvin</td>
+									<td>admin@admin.com</td>
+									<td>102</td>
+								</tr>
+								
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			<div class="col s12 no-padding">
+				<ul class="collection with-header">
+					<li class="collection-item blue white-text">나의 이용내역 </li>
+					{% for myrank in meal_myrank %}
+					<li class="collection-item">{{ myrank.meal }}</li>
+					{% endfor %}
+
+				</ul>	
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block script %}
+<script type="text/javascript"> 
+	$(function(){
+		$('#feed').click(function(){
+			location.replace("/"); 
+		});
+		$('#routine').click(function(){
+			location.replace("/people"); 
+		});
+		$('#mypage').click(function(){
+			location.replace("/mypage"); 
+		});
+	});
+</script>
+<script type="text/javascript">
+	google.charts.load('current', {'packages':['corechart']});
+	google.charts.setOnLoadCallback(drawChart);
+
+	function drawChart() {
+		var data = google.visualization.arrayToDataTable([
+			['Year',  'Expenses'],
+			{% for meal in meal_check %}
+			['{{meal.meal_date}}',      {{meal.count}}],
+			{% endfor %}
+			]);
+
+		var options = {
+			title: '날짜별 이용수',
+			hAxis: {title: 'Year',  titleTextStyle: {color: '#333'}},
+			vAxis: {minValue: 0}
+		};
+
+		var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
+		chart.draw(data, options);
+	}
+</script>
+{% endblock %}

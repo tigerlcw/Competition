@@ -1,0 +1,89 @@
+{% extends "main/base.html" %}
+{% load staticfiles %}
+{% block content %}
+{% if request.user %}
+<div class="bottom-tab">
+	<ul class="tabs">
+		<li class="tab col s3"><a class="active" href="#test1"><i class="material-icons">dashboard</i></a></li>
+		<li class="tab col s3"><a href="search"  id="search"><i class="material-icons">search</i></a></li>
+		<li class="tab col s3"><a href="routine"  id="routine"><i class="material-icons">timelapse</i></a></li>
+	</ul>
+</div>
+<div class="sub-tab">
+	<ul class="tabs">
+		<li class="tab col s6"><a  href="#all" class="active">ALL</a></li>
+		<li class="tab col s6"><a href= "#search">Follow</a></li>
+	</ul>
+</div>
+
+
+<div id="all" class="col s12">
+
+	<div class="contain container">
+		<div class="row">
+			<div class="col s12 m6 no-padding">
+			{% if meals %}
+			{% for meal in meals %}
+				<div class="card" onclick="location.href='/meal_detail/{{meal.pk}}'">
+					<div class="card-content card-user">
+						<div class="row valign-wrapper no-margin">
+							<div class="col s5"  style="margin-left:10px;">
+								<p>
+									<span class="card-username black-text">
+										{{meal.date}}
+									</span>
+								</p>
+							</div>
+							<div class="col s4 text-right">
+								<span class="grey-text darken-3">{{meal.time}}</span>
+							</div>
+						</div>
+					</div>
+					<div class="card-action card-routine">
+						<img src="/media/{{ meal.image }}" width="100%" >
+						<br />
+						<span>{{meal.menu}}</span>
+					</div>
+					<div class="card-action">
+						<div class="row no-margin">
+							<div class="col s1">
+								<a><i class="material-icons timer-icon">local_dining</i></a>
+							</div>
+							<div class="col s3">
+								<span class="timer">{{meal.kcal}}kcal</span>
+							</div>
+							<div class="col s1">
+								<a><i class="material-icons timer-icon">favorite</i></a>
+							</div>
+							<div class="col s3">
+								<span class="timer">{{meal.favor}}</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+				{% else %}
+				식단 데이터가 없습니다.
+				{% endif  %}
+			</div>
+		</div>
+	</div>
+	{% endif %}
+
+	{% endblock %}
+
+	{% block script %}
+	<script type="text/javascript"> 
+		$(function(){
+			$('#search').click(function(){
+				location.replace("/search"); 
+			});
+			$('#routine').click(function(){
+				location.replace("/routine"); 
+			});
+			$('#mypage').click(function(){
+				location.replace("/mypage"); 
+			});
+		});
+	</script>
+	{% endblock %}
