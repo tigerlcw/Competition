@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+<head>
+<meta name="viewport" content="width=device-width, user-scalable=no">
+<meta charset="utf-8">
+<title>우리말 겨루기!</title>
+<script language="JavaScript">
+
+ function check(){
+ var sum=0;
+ for(i=0 ; i<10 ; i++){
+ if(document.getElementsByName('goal'+i)[0].checked == true){
+ sum++;
+ }
+ }
+alert(sum*10+"점 입니다.");
+}
+</script>
+
+
+<center>
+<table border=3px bgcolor="#F7F8E0"><tr><td>
+<font size="6" face="문체부 훈민정음체">알쏭달쏭 우리말</font></td></tr></table></center>
+<form name="quizz"> 
+<p align="center">1. 올바른 것은?</p>
+
+<p align="center"><input type="checkbox" value="1">흩뿌려진 꽃잎을 즈려밟다.</p>
+<p align="center"><input type="checkbox" name="goal0"value="2">흩뿌려진 꽃잎을 지르밟다.</p>
+<br>
+
+<p align="center">2. 올바른 것은?</p>
+
+<p align="center"><input type="checkbox"  value="1">다가와 나지막히 말하였다.</p>
+<p align="center"><input type="checkbox" value="2">다가와 나지막이 말하였다.</p>
+<p align="center"><input type="checkbox" name="goal1" value="3">다가와 나즈막이 말하였다.</p>
+<p align="center"><input type="checkbox"  value="4">다가와 나즈막히 말하였다.</p><br>
+
+<p align="center">3. 올바른 것은?</p>
+
+<p align="center"><input type="checkbox" value="1">네가 있음에 마음이 놓인다.</p>
+<p align="center"><input type="checkbox" name="goal2" value="2">네가 있으매 마음이 놓인다.</p>
+<br>
+
+<p align="center">4. 올바른 것은?</p>
+
+<p align="center"><input type="checkbox" name="goal3" value="1">추워서 입술이 퍼래요.</p>
+<p align="center"><input type="checkbox" value="2">추워서 입술이 퍼레요.</p>
+<br>
+
+<p align="center">5. 올바른 것은?</p>
+
+<p align="center"><input type="checkbox" name="goal4" value="1">공사 현장의 인부는 흙받기를 가지고 일했다.</p>
+<p align="center"><input type="checkbox" value="2">공사 현장의 인부는 흙받이를 가지고 일했다.</p>
+<br>
+
+<p align="center">6. 올바른 것은?</p>
+
+<p align="center"><input type="checkbox" name="goal5" value="1">우리집 강아지는 얼루기야.</p>
+<p align="center"><input type="checkbox" value="2">우리집 강아지는 얼룩이야.</p>
+<br>
+
+<p align="center">7. 올바른 것은?</p>
+
+<p align="center"><input type="checkbox" name="goal6" value="1">도박으로 인해 패가망신하고 말았다.</p>
+<p align="center"><input type="checkbox" value="2">도박으로 인해 폐가망신하고 말았다.</p>
+<br>
+<p align="center">8. 올바른 것은?</p>
+
+<p align="center"><input type="checkbox" name="goal7" value="1">웃통 벗은 채 노는 아이들</p>
+<p align="center"><input type="checkbox" value="2">위통 벗은 채 노는 아이들</p>
+<br>
+<p align="center">9. 올바른 것은?</p>
+
+<p align="center"><input type="checkbox" value="1">며칠만에 강추위가 한풀 꺽였다.</p>
+<p align="center"><input type="checkbox" name="goal8" value="2">며칠만에 강추위가 한풀 꺾였다.</p>
+<br>
+<p align="center">10. 올바른 것은?</p>
+
+<p align="center"><input type="checkbox" name="goal9"  value="1">애들 뒤치다꺼리에 바쁘다.</p>
+<p align="center"><input type="checkbox" value="2">애들 뒤치닥거리에 바쁘다.</p>
+<p align="center"><input type="checkbox" value="3">애들 뒤치닥꺼리에 바쁘다.</p>
+<br>
+<form action="goal.html">
+<p align="center"><input type="button" value="채점하기"onClick="check();"></p><br>
+</form>
+</head>
+<body background="q1.png">
+<center>
+<form action="quiz2.html">
+<input type="submit" value="다른 문제 풀러가기~!">
+</form>
+</center>
+<font size="1"><b>출처 : 네이버 단어퀴즈</b>　　　　　　문제는 매주 토요일에 갱신됩니다.</font>
+</body>
+</html>

@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html>
+<head>
+<meta name="viewport" content="width=device-width, user-scalable=no">
+<meta charset="utf-8">
+<title>우리말 겨루기!</title>
+<script language="JavaScript">
+
+ function check(){
+ var sum=0;
+ for(i=0 ; i<10 ; i++){
+ if(document.getElementsByName('goal'+i)[0].checked == true){
+ sum++;
+ }
+ }
+alert(sum*10+"점 입니다");
+}
+
+</script>
+<center>
+<table border=3px bgcolor="#F7F8E0"><tr><td>
+<font size="6" face="문체부 훈민정음체">알고쓰는 외래어</font></td></tr></table></center>
+<form name="quizz"> 
+<p align="center">1. 올바른 표기는?</p>
+
+<p align="center"><input type="checkbox" value="1">발렌타인데이</p>
+<p align="center"><input type="checkbox" name="goal0"value="2">밸런타인데이</p>
+<p align="center"><input type="checkbox" value="3">발렌타이데이</p>
+<p align="center"><input type="checkbox" value="4">밸런타이데이</p>
+<br>
+
+<p align="center">2. 올바른 표기는?</p>
+
+<p align="center"><input type="checkbox"  value="1">자스민</p>
+<p align="center"><input type="checkbox"  name="goal1" value="2">재스민</p>
+<p align="center"><input type="checkbox"value="3">쟈스민</p>
+<br>
+
+<p align="center">3. 올바른 표기는?</p>
+
+<p align="center"><input type="checkbox" name="goal2" value="1">스트로</p>
+<p align="center"><input type="checkbox" value="2">스트로우</p>
+<br>
+
+<p align="center">4. 올바른 표기는?</p>
+
+<p align="center"><input type="checkbox"  value="1">스탠다드</p>
+<p align="center"><input type="checkbox" name="goal3"value="2">스탠더드</p>
+<br>
+
+<p align="center">5. 올바른 표기는?</p>
+
+<p align="center"><input type="checkbox" name="goal4" value="1">라이선스</p>
+<p align="center"><input type="checkbox" value="2">라이센스</p>
+<br>
+
+<p align="center">6. 올바른 표기는?</p>
+
+<p align="center"><input type="checkbox" name="goal5" value="1">내비게이션</p>
+<p align="center"><input type="checkbox" value="2">네비게이션</p>
+<br>
+
+<p align="center">7. 올바른 표기는?</p>
+
+<p align="center"><input type="checkbox" name="goal6" value="1">녹다운</p>
+<p align="center"><input type="checkbox" value="2">넉다운</p>
+<br>
+<p align="center">8. 올바른 표기는?</p>
+
+<p align="center"><input type="checkbox"  value="1">맴버</p>
+<p align="center"><input type="checkbox" name="goal7"value="2">멤버</p>
+<br>
+<p align="center">9. 올바른 표기는?</p>
+
+<p align="center"><input type="checkbox" value="1">데이타</p>
+<p align="center"><input type="checkbox" name="goal8" value="2">데이터</p>
+<br>
+<p align="center">10. 올바른 표기는?</p>
+
+<p align="center"><input type="checkbox"   value="1">액세사리</p>
+<p align="center"><input type="checkbox" value="2">악세사리</p>
+<p align="center"><input type="checkbox" name="goal9"value="3">액세서리</p>
+<p align="center"><input type="checkbox" value="4">악세서리</p>
+<br>
+
+<p align="center"><input type="button" value="채점하기" onClick="check();"></p><br>
+</form>
+    </head>
+<body background="q1.png">
+<center>
+ <form action="quiz3.html">
+<input type="submit" value="다른 문제 풀러가기~!">
+</form>
+</center>
+<font size="1"><b>출처 : 네이버 단어퀴즈</b></font>
+</body>
+</html>
